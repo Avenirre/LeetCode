@@ -1,4 +1,4 @@
-package com.topQuestions.trainings;
+package com.topQuestions.easy.trainings;
 
 import java.util.Arrays;
 
@@ -6,11 +6,11 @@ public class TwoPointersTasks {
 
     public static void main(String[] args) {
 //        String s = "abc def";
-//        reverseWordsInString(s);
+//        reverseWordsInStringIII(s);
 
 //        int[] arr1 = {1, 3, 5, 7, 0, 0, 0, 0};
 //        int[] arr2 = {2, 4, 6, 8};
-//        mergeArrays(arr1, arr2, 4, 4);
+//        mergeSortedArrays(arr1, arr2, 4, 4);
 
 //        String s1 = "abc";
 //        String s2 = "def";
@@ -45,6 +45,29 @@ public class TwoPointersTasks {
         reverseStringII(s7, 2);
 
 
+    }
+
+    private static int[] mergeSortedArrays(int[] arr1, int[] arr2, int m, int n) {
+        //1,3,5,7
+        //2,4,6,8
+        int pointer1 = m - 1;
+        int pointer2 = n - 1;
+
+        for (int i = arr1.length - 1; i > 0; i--) {
+
+            if (pointer2 < 0) {
+                break;
+            }
+
+            if (pointer1 > 0 && arr1[pointer1] >= arr2[pointer2]) {
+                arr1[i] = arr1[pointer1--];
+            } else {
+                arr1[i] = arr2[pointer2--];
+            }
+        }
+
+        System.out.println(Arrays.toString(arr1));
+        return arr1;
     }
 
     private static void reverseStringII(String s, int k) {
@@ -93,6 +116,29 @@ public class TwoPointersTasks {
         return c == 'a' || c == 'e' || c == 'i'|| c == 'o' || c == 'u';
     }
 
+    private static String mergeStringAlternately(String s1, String s2) {
+        int s1Length = s1.length();
+        int s2Length = s2.length();
+
+        StringBuilder result = new StringBuilder();
+
+        int s1Pointer = 0;
+        int s2Pointer = 0;
+
+        while (s1Pointer < s1Length || s2Pointer < s2Length) {
+            if (s1Pointer < s1Length) {
+                result.append(s1.charAt(s1Pointer++));
+            }
+
+            if (s2Pointer < s2Length) {
+                result.append(s2.charAt(s2Pointer++));
+            }
+        }
+
+        System.out.println(result.toString());
+
+        return result.toString();
+    }
 
     private static boolean validPalindromeWithRemovingCharacter(String s) {
         int start = 0;
@@ -126,80 +172,6 @@ public class TwoPointersTasks {
     }
 
 
-    private static String reverseWordsInString(String s) {
-        if (s == null || s.isEmpty()) {
-            return s;
-        }
-        int length = s.length();
-        char[] chArray = s.toCharArray();
-
-        int start = 0;
-
-        for (int i = 0; i <= length; i++) {
-            if (i == length || chArray[i] == ' ') {
-                int end = i - 1;
-                while (start < end) {
-                    char temp = chArray[start];
-                    chArray[start++] = chArray[end];
-                    chArray[end--] = temp;
-                }
-                start = i + 1;
-            }
-        }
-
-        System.out.println(new String(chArray));
-
-        return new String(chArray);
-    }
-
-    private static int[] mergeArrays(int[] arr1, int[] arr2, int m, int n) {
-        //1,3,5,7
-        //2,4,6,8
-        int pointer1 = m - 1;
-        int pointer2 = n - 1;
-
-        for (int i = arr1.length - 1; i > 0; i--) {
-
-            if (pointer2 < 0) {
-                break;
-            }
-
-            if (pointer1 > 0 && arr1[pointer1] >= arr2[pointer2]) {
-                arr1[i] = arr1[pointer1--];
-            } else {
-                arr1[i] = arr2[pointer2--];
-            }
-        }
-
-        System.out.println(Arrays.toString(arr1));
-        return arr1;
-    }
-
-    private static String mergeStringAlternately(String s1, String s2) {
-        int s1Length = s1.length();
-        int s2Length = s2.length();
-
-        StringBuilder result = new StringBuilder();
-
-        int s1Pointer = 0;
-        int s2Pointer = 0;
-
-        while (s1Pointer < s1Length || s2Pointer < s2Length) {
-            if (s1Pointer < s1Length) {
-                result.append(s1.charAt(s1Pointer++));
-            }
-
-            if (s2Pointer < s2Length) {
-                result.append(s2.charAt(s2Pointer++));
-            }
-        }
-
-        System.out.println(result.toString());
-
-        return result.toString();
-    }
-
-
     private static void moveZeroes(int[] arr) {
         int lastNonZeroIndex = 0;
 
@@ -228,6 +200,32 @@ public class TwoPointersTasks {
 
         System.out.println(insertIndex - 1);
         return insertIndex - 1;
+    }
+
+    private static String reverseWordsInString(String s) {
+        if (s == null || s.isEmpty()) {
+            return s;
+        }
+        int length = s.length();
+        char[] chArray = s.toCharArray();
+
+        int start = 0;
+
+        for (int i = 0; i <= length; i++) {
+            if (i == length || chArray[i] == ' ') {
+                int end = i - 1;
+                while (start < end) {
+                    char temp = chArray[start];
+                    chArray[start++] = chArray[end];
+                    chArray[end--] = temp;
+                }
+                start = i + 1;
+            }
+        }
+
+        System.out.println(new String(chArray));
+
+        return new String(chArray);
     }
 
     private static void removeElement(int[] arr, int value) {

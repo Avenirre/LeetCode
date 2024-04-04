@@ -1,8 +1,4 @@
-package com.topQuestions.trainings;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+package com.topQuestions.easy.trainings;
 
 public class LinkedListTasks {
 
