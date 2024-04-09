@@ -27,6 +27,11 @@ public class TwoPointersTasks {
 
 //        int[] arr5 = {1,3,1,4,1,4,4};
 //        removeElement(arr5, 1);
+
+//        int[] greed = {1,2,3};
+//        int[] size = {1,1};
+//        System.out.println(assignCookies(greed, size));
+
         
 //        int[] arr6 = {2,3,8,7,6,3};
 //        sortArrayByParity(arr6);
@@ -41,8 +46,8 @@ public class TwoPointersTasks {
 //        int[] arr7 = {-4, -2, 0, 5, 11};
 //        getSquaresOfASortedArray(arr7);
 
-        String s7 = "abcdefgh";
-        reverseStringII(s7, 2);
+//        String s7 = "abcdefgh";
+//        reverseStringII(s7, 2);
 
 
     }
@@ -238,6 +243,23 @@ public class TwoPointersTasks {
         }
 
         System.out.println(Arrays.toString(arr));
+    }
+
+    private static int assignCookies(int[] greed, int[] size) {
+        Arrays.sort(greed);
+        Arrays.sort(size);
+
+        int cookiesIndex = 0;
+        int childrenWithCookies = 0;
+
+        while (cookiesIndex < size.length && childrenWithCookies < greed.length) {
+            if (size[cookiesIndex] >= greed[childrenWithCookies]) {
+                childrenWithCookies++;
+            }
+            cookiesIndex++;
+        }
+
+        return childrenWithCookies;
     }
 
     private static void sortArrayByParity(int[] arr) {

@@ -6,8 +6,8 @@ public class ArrayTasks {
 
     public static void main(String[] args) {
 
-        int[] arr1 = {7,2,8,5,1,3,4};
-        System.out.println(missingNumber(arr1));
+//        int[] arr1 = {7,2,8,5,1,3,4};
+//        System.out.println(missingNumber(arr1));
 //        int[] arr2 = {1,3,1,2,1,1,1};
 //        System.out.println(majorityElement(arr1));
 //        int[] arr3 = {1,3,1,2,3,1};
@@ -18,6 +18,8 @@ public class ArrayTasks {
 //        System.out.println(elementAppearingMoreThan25PercentInSortedArray(arr4));
 //        int[] arr6 = {1,2,3,3,5,6};
 //        System.out.println(setMismatch(arr5));
+        int[] arr7 = {1,2,3,4};
+        System.out.println(Arrays.toString(runningSumOf1DArray(arr7)));
     }
 
     private static int missingNumber(int[] arr) {
@@ -107,6 +109,13 @@ public class ArrayTasks {
 
         System.out.println(Arrays.toString(results));
         return results;
+    }
+
+    private static int[] runningSumOf1DArray(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            arr[i] += arr[i - 1];
+        }
+        return arr;
     }
 
 
