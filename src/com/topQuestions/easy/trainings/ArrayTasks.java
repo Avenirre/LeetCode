@@ -1,5 +1,7 @@
 package com.topQuestions.easy.trainings;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
 
 public class ArrayTasks {
@@ -18,8 +20,15 @@ public class ArrayTasks {
 //        System.out.println(elementAppearingMoreThan25PercentInSortedArray(arr4));
 //        int[] arr6 = {1,2,3,3,5,6};
 //        System.out.println(setMismatch(arr5));
-        int[] arr7 = {1,2,3,4};
-        System.out.println(Arrays.toString(runningSumOf1DArray(arr7)));
+//        int[] arr7 = {1,2,3,4};
+//        System.out.println(Arrays.toString(runningSumOf1DArray(arr7)))
+//        int[] arr1 = {1,1,2,3,3};
+//        System.out.println(singleNumber(arr1));
+//        int[] arr8 = {1,2,3,6};
+//        int[] arr9 = {2,3,4,5};
+//        System.out.println(minimumCommonValue(arr8, arr9));
+//        int[] arr10 = {1,2,2,3,1,4};
+//        System.out.println(countElementsWithMaximumFrequency(arr10));//
     }
 
     private static int missingNumber(int[] arr) {
@@ -116,6 +125,63 @@ public class ArrayTasks {
             arr[i] += arr[i - 1];
         }
         return arr;
+    }
+
+    private static int singleNumber(int[] arr) {
+        int arrSum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            arrSum += arr[i];
+        }
+
+        Set<Integer> set = new HashSet<>();
+        int setSum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (set.add(arr[i])) {
+                setSum += arr[i];
+            }
+        }
+
+        return 2 * setSum - arrSum;
+    }
+
+    private static int minimumCommonValue(int[] arr1, int[] arr2) {
+        int arr1Length = arr1.length;
+        int arr2Length = arr2.length;
+
+        int index1 = 0;
+        int index2 = 0;
+
+        while (index1 < arr1Length && index2 < arr2Length) {
+            if (arr1[index1] == arr2[index2]) {
+                return arr1[index1];
+            }
+
+            if (arr1[index1] > arr2[index2]) {
+                index2++;
+            }
+
+            if (arr1[index1] < arr2[index2]) {
+                index1++;
+            }
+        }
+
+        return -1;
+    }
+
+    private static int countElementsWithMaximumFrequency(int[] arr) {
+        int[] maxFrequency = {0};
+        Map<Integer, Integer> stats = new HashMap<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            int currentFrequency = stats.getOrDefault(arr[i], 0) + 1;
+            stats.put(arr[i], currentFrequency);
+            maxFrequency[0] = Math.max(maxFrequency[0], currentFrequency);
+        }
+
+        return stats.entrySet().stream().filter(e -> e.getValue() == maxFrequency[0])
+                .mapToInt(Map.Entry::getValue)
+                .sum();
     }
 
 

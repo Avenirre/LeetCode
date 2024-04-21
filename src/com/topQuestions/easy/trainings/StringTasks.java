@@ -12,41 +12,11 @@ public class StringTasks {
 //        System.out.println(isomorphicStrings(s2, t2));
 //        String s3 = "011101";
 //        System.out.println(maxScore(s3));
-//        int[] arr1 = {1,1,2,3,3};
-//        System.out.println(singleNumber(arr1));
-        String[] words = {"cat","bt","hat","tree"};
-        String chars = "atach";
-        System.out.println(findWordsThatCanBeFormedByCharacters(words, chars));
-    }
-
-    private static int findWordsThatCanBeFormedByCharacters(String[] words, String chars) {
-        int result = 0;
-        int[] stats = new int[26];
-
-        for (int i = 0; i < chars.length(); i++) {
-            stats[chars.charAt(i) - 'a']++;
-        }
-
-        for (String word: words) {
-            int[] wordStats = new int[26];
-            for (char ch : word.toCharArray()) {
-                wordStats[ch - 'a']++;
-            }
-
-            boolean isGood = true;
-            for (int i = 0; i < 26; i++) {
-                if (stats[i] < wordStats[i]) {
-                    isGood = false;
-                    break;
-                }
-            }
-
-            if (isGood) {
-                result += word.length();
-            }
-        }
-
-        return result;
+//        String[] words = {"cat","bt","hat","tree"};
+//        String chars = "atach";
+//        System.out.println(findWordsThatCanBeFormedByCharacters(words, chars));
+//        String  s4 = "abca";
+//        System.out.println(largestSubstringBetweenTwoEqualCharacters(s4));
     }
 
     private static int firstUniqueCharacterInAString(String s) {
@@ -123,21 +93,50 @@ public class StringTasks {
         return totalSum;
     }
 
-    private static int singleNumber(int[] arr) {
-        int arrSum = 0;
+    private static int findWordsThatCanBeFormedByCharacters(String[] words, String chars) {
+        int result = 0;
+        int[] stats = new int[26];
 
-        for (int i = 0; i < arr.length; i++) {
-            arrSum += arr[i];
+        for (int i = 0; i < chars.length(); i++) {
+            stats[chars.charAt(i) - 'a']++;
         }
 
-        Set<Integer> set = new HashSet<>();
-        int setSum = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (set.add(arr[i])) {
-                setSum += arr[i];
+        for (String word: words) {
+            int[] wordStats = new int[26];
+            for (char ch : word.toCharArray()) {
+                wordStats[ch - 'a']++;
+            }
+
+            boolean isGood = true;
+            for (int i = 0; i < 26; i++) {
+                if (stats[i] < wordStats[i]) {
+                    isGood = false;
+                    break;
+                }
+            }
+
+            if (isGood) {
+                result += word.length();
             }
         }
 
-        return 2 * setSum - arrSum;
+        return result;
+    }
+
+    private static int largestSubstringBetweenTwoEqualCharacters(String s) {
+        Map<Character, Integer> chars = new HashMap<>();
+        int result = -1;
+
+        for (int i = 0; i < s.length(); i++) {
+            int prevIndex = chars.getOrDefault(s.charAt(i), -1);
+
+            if (prevIndex != -1) {
+                result = Math.max(result, i - prevIndex - 1);
+            } else {
+                chars.put(s.charAt(i), i);
+            }
+        }
+
+        return result;
     }
 }
