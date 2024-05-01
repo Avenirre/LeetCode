@@ -1,4 +1,4 @@
-package com.topQuestions.easy.trainings;
+package com.topQuestions.multithreading;
 
 public class MultithreadingProblems {
     int counter = 1;
@@ -25,20 +25,20 @@ public class MultithreadingProblems {
     public static void main(String[] args) {
         N = 10;
 
-        MultithreadingProblems mt = new MultithreadingProblems();
-        Thread t1 = new Thread(new Runnable() {
-            public void run() {
-                mt.printNumber(false);
-            }
-        });
-        Thread t2 = new Thread(new Runnable() {
-            public void run() {
-                mt.printNumber(true);
-            }
-        });
-
-        t1.start();
-        t2.start();
+//        MultithreadingProblems mt = new MultithreadingProblems();
+//        SimpleThread t1 = new SimpleThread(new Runnable() {
+//            public void run() {
+//                mt.printNumber(false);
+//            }
+//        });
+//        SimpleThread t2 = new SimpleThread(new Runnable() {
+//            public void run() {
+//                mt.printNumber(true);
+//            }
+//        });
+//
+//        t1.start();
+//        t2.start();
     }
 }
 
