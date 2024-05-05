@@ -25,6 +25,8 @@ public class MultithreadingProblems {
     public static void main(String[] args) {
         N = 10;
 
+
+
 //        MultithreadingProblems mt = new MultithreadingProblems();
 //        SimpleThread t1 = new SimpleThread(new Runnable() {
 //            public void run() {
