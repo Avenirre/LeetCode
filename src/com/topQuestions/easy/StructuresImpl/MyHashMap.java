@@ -1,4 +1,4 @@
-package com.topQuestions.easy.trainings.StructuresImpl;
+package com.topQuestions.easy.StructuresImpl;
 
 public class MyHashMap {
 

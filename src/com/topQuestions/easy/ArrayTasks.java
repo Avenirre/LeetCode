@@ -1,4 +1,4 @@
-package com.topQuestions.easy.trainings;
+package com.topQuestions.easy;
 
 import org.w3c.dom.ls.LSOutput;
 

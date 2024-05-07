@@ -1,4 +1,4 @@
-package com.topQuestions.easy.trainings;
+package com.topQuestions.easy;
 
 public class SlidingWindowTasks {
 

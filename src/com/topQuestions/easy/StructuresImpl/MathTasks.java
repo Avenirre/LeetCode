@@ -1,4 +1,4 @@
-package com.topQuestions.easy.trainings.StructuresImpl;
+package com.topQuestions.easy.StructuresImpl;
 
 import org.w3c.dom.ls.LSOutput;
 

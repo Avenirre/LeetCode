@@ -1,4 +1,4 @@
-package com.topQuestions.easy.trainings;
+package com.topQuestions.easy;
 
 import java.util.Arrays;
 
