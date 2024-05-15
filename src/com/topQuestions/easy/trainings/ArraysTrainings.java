@@ -28,15 +28,18 @@ public class ArraysTrainings {
 //        int[] arr8 = {1, 1, 2, 2, 3 ,4, 4, 5, 5};
 //        System.out.println(singleNumber(arr8));
 
-//        int[] arr9 = {1, 2, 3, 6};
-//        int[] arr10 = {2, 3, 4, 5};
-//        System.out.println(minimumCommonValue(arr9, arr10));
+          String[] words = {"cat", "bt", "hat", "tree"};
+          String chars = "atach";
+          System.out.println(findWordsThatCanBeFormedByCharacters(words, chars));
 
-        int[] arr11 = {1,2,2,3,1,4};
-        System.out.println(maxFrequencyElements(arr11));
+//        int[] arr10 = {1, 2, 3, 6};
+//        int[] arr11 = {2, 3, 4, 5};
+//        System.out.println(minimumCommonValue(arr10, arr11));
+
+//        int[] arr11 = {1,2,2,3,1,4};
+//        System.out.println(maxFrequencyElements(arr12));
 
     }
-
     public static int maxFrequencyElements(int[] arr) {
         int[] maxFrequency = {0};
         Map<Integer, Integer> stats = new HashMap<>();
@@ -68,6 +71,38 @@ public class ArraysTrainings {
 
         return -1;
     }
+
+    private static int findWordsThatCanBeFormedByCharacters(String[] words, String chars) {
+        int result = 0;
+        int[] stats = new int[26];
+
+        for (int i = 0; i < chars.length(); i++) {
+            stats[chars.charAt(i) - 'a']++;
+        }
+
+        for (int i = 0; i < words.length; i++) {
+            int[] currentStats = new int[26];
+            for (char ch : words[i].toCharArray()) {
+                currentStats[ch - 'a']++;
+            }
+
+            if (canBeFormed(stats, currentStats)) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
+    private static boolean canBeFormed(int[] stats, int[] currentStats) {
+        for (int i = 0; i < stats.length; i++) {
+            if (currentStats[i] > stats[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     private static int singleNumber(int[] arr) {
         Set<Integer> uniqueElements = Arrays.stream(arr).boxed().collect(Collectors.toSet());
