@@ -14,12 +14,72 @@ public class TwoPointersTrainings {
 //        int[] arr2 = {1, 2, 4, 2, 4, 8};
 //        System.out.println(Arrays.toString(removeElement(arr2, 2)));
 
-        String s3 = "ab#c";
-        String s4 = "ac";
-        System.out.println(backspaceStringCompare(s3, s4));
+//        String s2 = "ab#c";
+//        String s3 = "ac";
+//        System.out.println(backspaceStringCompare(s2, s3));
+//
+//        String s4 = "abbedsoo";
+//        System.out.println(reverseVowelsOfAString(s4));
 
-        String s2 = "abbedsoo";
-        System.out.println(reverseVowelsOfAString(s2));
+//        String s5 = "ace";
+//        String s6 = "abcde";
+//        System.out.println(isSubsequence(s5, s6));
+
+//        int[] arr2 = {-5, -2, 0, 2, 4, 7};
+//        System.out.println(Arrays.toString(squaresOfSortedArray(arr2)));
+
+        String s7 = "aabbaabbaabb";
+        System.out.println(reverseStringIII(s7, 2));
+    }
+
+    private static String reverseStringIII(String s, int k) {
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i += 2 * k) {
+            int start = i;
+            int end = Math.min(i + 2 * k - 1, chars.length - 1);
+            while (start < end) {
+                char temp = chars[start];
+                chars[start++] = chars[end];
+                chars[end--] = temp;
+            }
+        }
+
+        return new String(chars);
+
+    }
+
+    private static int[] squaresOfSortedArray(int[] arr) {
+        int[] result = new int[arr.length];
+        int start = 0;
+        int end = arr.length - 1;
+        int currentIndex = arr.length - 1;
+
+        while (start <= end) {
+            if (arr[start] * arr[start] >= arr[end] * arr[end]) {
+                result[currentIndex--] = arr[start] * arr[start];
+                start++;
+            } else {
+                result[currentIndex--] = arr[end] * arr[end];
+                end--;
+            }
+        }
+
+        return result;
+    }
+
+    private static boolean isSubsequence(String s1, String s2) {
+        int pointer1 = 0;
+        int pointer2 = 0;
+
+        while (pointer1 < s1.length() && pointer2 < s2.length()) {
+            if (s1.charAt(pointer1) == s2.charAt(pointer2)) {
+                pointer1++;
+            }
+
+            pointer2++;
+        }
+
+        return pointer1 == s1.length();
     }
 
     private static String reverseVowelsOfAString(String s) {
