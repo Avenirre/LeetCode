@@ -22,24 +22,29 @@ public class ArraysTrainings {
 //        int[] arr6 = {1, 2, 2, 2, 3,};
 //        System.out.println(elementAppearingMoreThan25PercentInSortedArray(arr6));
 
-//        int[] arr7 = {1, 2, 3 ,4 ,5};
-//        System.out.println(Arrays.toString(runningSumOf1dArray(arr7)));
+        int[] arr7 = {1,2,2,4};
+        System.out.println(Arrays.toString(setMismatch(arr7)));
 
-//        int[] arr8 = {1, 1, 2, 2, 3 ,4, 4, 5, 5};
-//        System.out.println(singleNumber(arr8));
 
-          String[] words = {"cat", "bt", "hat", "tree"};
-          String chars = "atach";
-          System.out.println(findWordsThatCanBeFormedByCharacters(words, chars));
+//        int[] arr8 = {1, 2, 3 ,4 ,5};
+//        System.out.println(Arrays.toString(runningSumOf1dArray(arr8)));
+
+//        int[] arr9 = {1, 1, 2, 2, 3 ,4, 4, 5, 5};
+//        System.out.println(singleNumber(arr9));
+
+//          String[] words = {"cat", "bt", "hat", "tree"};
+//          String chars = "atach";
+//          System.out.println(findWordsThatCanBeFormedByCharacters(words, chars));
 
 //        int[] arr10 = {1, 2, 3, 6};
 //        int[] arr11 = {2, 3, 4, 5};
 //        System.out.println(minimumCommonValue(arr10, arr11));
 
-//        int[] arr11 = {1,2,2,3,1,4};
+//        int[] arr12 = {1,2,2,3,1,4};
 //        System.out.println(maxFrequencyElements(arr12));
 
     }
+
     public static int maxFrequencyElements(int[] arr) {
         int[] maxFrequency = {0};
         Map<Integer, Integer> stats = new HashMap<>();
@@ -120,6 +125,29 @@ public class ArraysTrainings {
         }
 
         return arr;
+    }
+
+    private static int[] setMismatch(int[] arr) {
+//        if (arr.length == 2) {
+//            return new int[]{1, 2};
+//        }
+//
+        int[] results = new int[2];
+//
+//        for (int i = 0; i < arr.length - 1; i++) {
+//            if (arr[i] == arr[i + 1]) {
+//                results[0] = arr[i];
+//                if (i == 0) {
+//                    results[i] = 2;
+//                } else if (i + 1 == arr.length - 1) {
+//                    results[1] = arr[i] - 1;
+//                } else {
+//                    results[1] = arr[i] + 1;
+//                }
+//            }
+//        }
+//
+        return results;
     }
 
     private static int elementAppearingMoreThan25PercentInSortedArray(int[] arr) {

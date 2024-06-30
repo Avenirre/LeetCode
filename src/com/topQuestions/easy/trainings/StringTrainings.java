@@ -13,8 +13,29 @@ public class StringTrainings {
 //        String s3 = "01010101";
 //        System.out.println(maximumScoreAfterSplittingAString(s3));
 
-        String s4 = "abbnsa";
-        System.out.println(largestSubstringBetweenTwoEqualsCharacters(s4));
+//        String s4 = "abbnsa";
+//        System.out.println(largestSubstringBetweenTwoEqualsCharacters(s4));
+        String[] words = {"abc","aabc","bbc"};
+        System.out.println(redistributeCharactersToMakeAllStringsEqual(words));
+    }
+
+    private static boolean redistributeCharactersToMakeAllStringsEqual(String[] words) {
+        Map<Character,Integer> stats = new HashMap<>();
+
+        Arrays.stream(words).forEach(w -> {
+            char[] chars = w.toCharArray();
+            for (int i = 0; i < chars.length; i++) {
+                stats.put(chars[i], stats.getOrDefault(chars[i], 0) + 1);
+            }
+        });
+
+        for (int frequency: stats.values()) {
+            if (frequency % words.length != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private static int largestSubstringBetweenTwoEqualsCharacters(String s) {

@@ -1,5 +1,7 @@
 package com.topQuestions.easy.trainings;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Arrays;
 
 public class MathTrainings {
@@ -11,8 +13,34 @@ public class MathTrainings {
 //        int n1 = 8;
 //        System.out.println(fibonacciNumber(n1));
 
-        int[] arr1 = {6, 2, 3, 9};
-        System.out.println(Arrays.toString(plusOne(arr1)));
+//        int[] arr1 = {6, 2, 3, 9};
+//        System.out.println(Arrays.toString(plusOne(arr1)));
+        String s2 = "456";
+        String s3 = "77";
+        System.out.println(addStrings(s2, s3));
+    }
+
+    private static String addStrings(String s1, String s2) {
+        StringBuilder result = new StringBuilder();
+
+        int carry = 0;
+        int p1 = s1.length() - 1;
+        int p2 = s2.length() - 1;
+
+        while (p1 >= 0 || p2 >= 0) {
+            int x1 = p1 >= 0 ? s1.charAt(p1--) - '0': 0;
+            int x2 = p2 >= 0 ? s2.charAt(p2--) - '0': 0;
+            int currentSum = x1 + x2 + carry;
+            int value = currentSum % 10;
+            carry = currentSum / 10;
+            result.append(value);
+        }
+
+        if (carry != 0) {
+            result.append(carry);
+        }
+
+        return result.reverse().toString();
     }
 
     private static int[] plusOne(int[] arr) {
