@@ -13,7 +13,29 @@ public class BinaryTreeTrainings {
                         new TreeNode(12, null, null),
                         new TreeNode(17, null, null)));
 
-        verticalOrderTraversal(root);
+        //verticalOrderTraversal(root);
+        root.left.parent = root;
+        root.right.parent = root;
+        System.out.println(lowestCommonAncestor(root.left, root.right));
+    }
+
+    private static TreeNode lowestCommonAncestor(TreeNode p, TreeNode q) {
+        Set<Integer> path = new HashSet<>();
+
+        while (p != null) {
+            path.add(p.val);
+            p = p.parent;
+        }
+
+        while (q != null) {
+            if (path.contains(q.val)) {
+                return q;
+            }
+
+            q = q.parent;
+        }
+
+        return q;
     }
 
     private static List<List<Integer>> verticalOrderTraversal(TreeNode root) {
@@ -82,6 +104,7 @@ public class BinaryTreeTrainings {
         int val;
         TreeNode left;
         TreeNode right;
+        TreeNode parent;
 
         TreeNode() {
         }
@@ -94,6 +117,23 @@ public class BinaryTreeTrainings {
             this.val = val;
             this.left = left;
             this.right = right;
+        }
+
+        public TreeNode(int val, TreeNode left, TreeNode right, TreeNode parent) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+            this.parent = parent;
+        }
+
+        @Override
+        public String toString() {
+            return "TreeNode{" +
+                    "val=" + val +
+                    ", left=" + left +
+                    ", right=" + right +
+                    ", parent=" + parent +
+                    '}';
         }
     }
 }

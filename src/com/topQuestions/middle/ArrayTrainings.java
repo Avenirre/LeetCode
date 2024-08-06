@@ -1,5 +1,7 @@
 package com.topQuestions.middle;
 
+import java.util.*;
+
 public class ArrayTrainings {
 
     public static void main(String[] args) {
@@ -9,7 +11,42 @@ public class ArrayTrainings {
                 {'0', '0', '1', '0', '0'},
                 {'0', '0', '0', '1', '1'}
         };
-        System.out.println(countIslandsNumber(grid));
+        //System.out.println(countIslandsNumber(grid));
+
+        String[]s1 = {"eat","tea","tan","ate","nat","bat"};
+        groupAnagrams(s1);
+    }
+
+    private static List<List<String>> groupAnagrams(String[] array) {
+        if (array.length == 0) {
+            return new ArrayList<>();
+        }
+
+        Map<String, List<String>> result = new HashMap<>();
+        int[] count = new int[26];
+
+        for (String word : array) {
+            //set 0s for all the array elements
+            Arrays.fill(count, 0);
+            for (char c : word.toCharArray()) {
+                count [c -'a']++;
+            }
+
+            StringBuilder sb = new StringBuilder("");
+            for (int i = 0; i < 26; i++) {
+                sb.append("#");
+                sb.append(count[i]);
+            }
+
+            String key = sb.toString();
+            if (!result.containsKey(key)) {
+                result.put(key, new ArrayList<>());
+            }
+            result.get(key).add(word);
+
+        }
+
+        return new ArrayList(result.values());
     }
 
     private static int countIslandsNumber(char[][] grid) {
